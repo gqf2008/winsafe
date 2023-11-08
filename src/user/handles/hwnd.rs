@@ -1815,6 +1815,10 @@ pub trait user_Hwnd: Handle {
 			},
 		)
 	}
+
+    fn PrintWindow(&self, hdc_src: &HDC, flags: u32) -> SysResult<()> {
+        bool_to_sysresult(unsafe { ffi::PrintWindow(self.ptr(), hdc_src.ptr(), flags) })
+    }
 }
 
 //------------------------------------------------------------------------------
